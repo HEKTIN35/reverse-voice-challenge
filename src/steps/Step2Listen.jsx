@@ -4,6 +4,7 @@ import { playAudioBuffer } from '../utils/reverseAudio';
 
 export default function Step2Listen({ reversedBuffer, onDone }) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [playCount, setPlayCount] = useState(0);
   const playerRef = useRef(null);
 
   useEffect(() => () => playerRef.current?.stop(), []);
@@ -11,17 +12,22 @@ export default function Step2Listen({ reversedBuffer, onDone }) {
   const handlePlay = () => {
     if (isPlaying) return;
     setIsPlaying(true);
+    setPlayCount((c) => c + 1);
     playerRef.current = playAudioBuffer(reversedBuffer, () => setIsPlaying(false));
   };
 
   return (
     <div className="flex flex-col items-center gap-6 text-center">
-      <h2 className="text-2xl font-bold text-white">Tersini dinle</h2>
-      <p className="text-zinc-400 max-w-xs">
-        Kaydın ters hali aşağıda. İstediğin kadar dinleyebilirsin. Bu sesi aklında tutmaya çalış!
-      </p>
+      <div>
+        <h2 className="text-xl font-bold text-white mb-1">Tersini dinle</h2>
+        <p className="text-zinc-500 text-sm leading-relaxed">
+          İstediğin kadar dinle. Bu sesi aklında tutmaya çalış!
+        </p>
+      </div>
 
-      <div className="text-6xl my-2">🔄</div>
+      <div className="w-16 h-16 rounded-2xl glass flex items-center justify-center text-3xl">
+        🔄
+      </div>
 
       <PlayerButton
         onPlay={handlePlay}
@@ -29,9 +35,13 @@ export default function Step2Listen({ reversedBuffer, onDone }) {
         label="Tersini Dinle"
       />
 
+      {playCount > 0 && (
+        <p className="text-zinc-600 text-xs">{playCount}× dinlendi</p>
+      )}
+
       <button
         onClick={onDone}
-        className="mt-4 px-10 py-4 rounded-2xl bg-purple-600 hover:bg-purple-500 active:scale-95 text-white font-bold text-lg transition-all duration-200 w-full max-w-xs"
+        className="w-full py-4 rounded-2xl text-white font-bold text-base transition-all duration-200 active:scale-95 btn-primary"
       >
         Hazırım →
       </button>

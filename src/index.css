@@ -1,1 +1,59 @@
 @import "tailwindcss";
+
+@layer base {
+  html,
+  body {
+    background-color: #09090b;
+    background-image:
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(139, 92, 246, 0.18), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 90%, rgba(99, 102, 241, 0.1), transparent);
+    min-height: 100vh;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 24px rgba(168, 85, 247, 0.35);
+  }
+
+  .glow-indigo {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #c084fc 0%, #818cf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #9333ea, #6366f1);
+    box-shadow: 0 4px 24px rgba(139, 92, 246, 0.3);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #a855f7, #818cf8);
+    box-shadow: 0 4px 32px rgba(139, 92, 246, 0.5);
+  }
+
+  .btn-success {
+    background: linear-gradient(135deg, #16a34a, #059669);
+    box-shadow: 0 4px 20px rgba(22, 163, 74, 0.25);
+  }
+
+  .btn-success:hover {
+    background: linear-gradient(135deg, #22c55e, #10b981);
+    box-shadow: 0 4px 28px rgba(22, 163, 74, 0.4);
+  }
+}

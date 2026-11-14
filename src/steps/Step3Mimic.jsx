@@ -7,14 +7,15 @@ export default function Step3Mimic({ onDone }) {
 
   return (
     <div className="flex flex-col items-center gap-6 text-center">
-      <h2 className="text-2xl font-bold text-white">Ters sesi taklit et</h2>
-      <p className="text-zinc-400 max-w-xs">
-        Az önce duyduğun ters sesi olabildiğince taklit ederek kaydet.
-        Yanlış sesleri doğru çıkarmak zor — dene!
-      </p>
+      <div>
+        <h2 className="text-xl font-bold text-white mb-1">Ters sesi taklit et</h2>
+        <p className="text-zinc-500 text-sm leading-relaxed">
+          Az önce duyduğun ters sesi olabildiğince taklit ederek kaydet.
+        </p>
+      </div>
 
       {error && (
-        <div className="bg-red-900/50 border border-red-700 text-red-300 rounded-xl p-4 text-sm max-w-xs">
+        <div className="w-full bg-red-950/60 border border-red-800/60 text-red-400 rounded-2xl px-4 py-3 text-sm text-left">
           {error}
         </div>
       )}
@@ -30,7 +31,7 @@ export default function Step3Mimic({ onDone }) {
       {audioBlob && !isRecording && (
         <button
           onClick={() => onDone(audioBlob)}
-          className="mt-4 px-10 py-4 rounded-2xl bg-green-600 hover:bg-green-500 active:scale-95 text-white font-bold text-lg transition-all duration-200 w-full max-w-xs"
+          className="mt-2 w-full py-4 rounded-2xl text-white font-bold text-base transition-all duration-200 active:scale-95 btn-success"
         >
           Devam Et →
         </button>
