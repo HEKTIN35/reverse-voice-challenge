@@ -17,7 +17,7 @@ export default function Step2Listen({ reversedBuffer, onDone }) {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6 text-center">
+    <div className="flex flex-col items-center gap-5 text-center">
       <div>
         <h2 className="text-xl font-bold text-white mb-1">Tersini dinle</h2>
         <p className="text-zinc-500 text-sm leading-relaxed">
@@ -29,11 +29,7 @@ export default function Step2Listen({ reversedBuffer, onDone }) {
         🔄
       </div>
 
-      <PlayerButton
-        onPlay={handlePlay}
-        isPlaying={isPlaying}
-        label="Tersini Dinle"
-      />
+      <PlayerButton onPlay={handlePlay} isPlaying={isPlaying} label="Tersini Dinle" />
 
       {playCount > 0 && (
         <p className="text-zinc-600 text-xs">{playCount}× dinlendi</p>
@@ -41,7 +37,7 @@ export default function Step2Listen({ reversedBuffer, onDone }) {
 
       <button
         onClick={onDone}
-        className="w-full py-4 rounded-2xl text-white font-bold text-base transition-all duration-200 active:scale-95 btn-primary"
+        className="w-full py-5 rounded-2xl text-white font-bold text-lg btn-primary"
       >
         Hazırım →
       </button>

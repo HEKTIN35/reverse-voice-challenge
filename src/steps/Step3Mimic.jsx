@@ -6,7 +6,7 @@ export default function Step3Mimic({ onDone }) {
   const { isRecording, audioBlob, level, error, startRecording, stopRecording } = useRecorder();
 
   return (
-    <div className="flex flex-col items-center gap-6 text-center">
+    <div className="flex flex-col items-center gap-5 text-center">
       <div>
         <h2 className="text-xl font-bold text-white mb-1">Ters sesi taklit et</h2>
         <p className="text-zinc-500 text-sm leading-relaxed">
@@ -15,7 +15,7 @@ export default function Step3Mimic({ onDone }) {
       </div>
 
       {error && (
-        <div className="w-full bg-red-950/60 border border-red-800/60 text-red-400 rounded-2xl px-4 py-3 text-sm text-left">
+        <div className="w-full bg-red-950/60 border border-red-700/50 text-red-400 rounded-2xl px-4 py-3 text-sm text-left">
           {error}
         </div>
       )}
@@ -31,7 +31,7 @@ export default function Step3Mimic({ onDone }) {
       {audioBlob && !isRecording && (
         <button
           onClick={() => onDone(audioBlob)}
-          className="mt-2 w-full py-4 rounded-2xl text-white font-bold text-base transition-all duration-200 active:scale-95 btn-success"
+          className="w-full py-5 rounded-2xl text-white font-bold text-lg btn-success"
         >
           Devam Et →
         </button>

@@ -15,7 +15,7 @@ export default function Step5Result({ originalBlob, onRestart }) {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6 text-center">
+    <div className="flex flex-col items-center gap-5 text-center">
       <div>
         <h2 className="text-xl font-bold text-white mb-1">Cevap zamanı!</h2>
         <p className="text-zinc-500 text-sm leading-relaxed">
@@ -27,17 +27,13 @@ export default function Step5Result({ originalBlob, onRestart }) {
         🎉
       </div>
 
-      <PlayerButton
-        onPlay={handlePlay}
-        isPlaying={isPlaying}
-        label="Orijinal Kaydı Dinle"
-      />
+      <PlayerButton onPlay={handlePlay} isPlaying={isPlaying} label="Orijinal Kaydı Dinle" />
 
-      <div className="w-full h-px bg-white/5 my-1" />
+      <div className="w-full h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(139,92,246,0.3), transparent)' }} />
 
       <button
         onClick={onRestart}
-        className="w-full py-4 rounded-2xl text-zinc-300 font-semibold text-base transition-all duration-200 active:scale-95 glass hover:bg-white/10"
+        className="w-full py-5 rounded-2xl text-zinc-300 font-bold text-lg glass transition-all duration-200 hover:bg-white/10 active:scale-97"
       >
         Yeniden Oyna
       </button>
