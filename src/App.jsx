@@ -41,24 +41,52 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center px-3 pt-10 pb-16">
+    <div className="min-h-screen flex flex-col items-center px-4 pt-8 pb-16">
+
       {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl sm:text-5xl font-black tracking-tight gradient-text mb-1">
+      <div className="text-center mb-6">
+        <h1
+          className="text-5xl font-black tracking-tight mb-1"
+          style={{ background: 'linear-gradient(135deg,#e879f9,#a78bfa,#60a5fa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+        >
           Reverse Voice
         </h1>
-        <p className="text-zinc-500 text-xs tracking-[0.2em] uppercase">Challenge</p>
+        <p className="text-purple-300/60 text-xs tracking-[0.25em] uppercase font-semibold">Challenge</p>
       </div>
 
       <StepIndicator current={step} total={TOTAL_STEPS} />
 
-      {/* Gradient border card */}
-      <div className="card-border w-full max-w-sm shadow-2xl">
-        <div className="card-inner p-6 sm:p-8">
+      {/* Back button */}
+      {step > 1 && !loading && (
+        <div className="w-full max-w-sm mb-3">
+          <button
+            onClick={() => setStep((s) => s - 1)}
+            className="flex items-center gap-1.5 text-purple-300/70 hover:text-white text-sm transition-colors active:scale-95"
+          >
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M12 5l-7 7 7 7"/>
+            </svg>
+            Geri
+          </button>
+        </div>
+      )}
+
+      {/* Card */}
+      <div
+        className="w-full max-w-sm rounded-3xl p-[1.5px]"
+        style={{ background: 'linear-gradient(135deg,rgba(192,132,252,0.5),rgba(236,72,153,0.3),rgba(99,102,241,0.4))' }}
+      >
+        <div
+          className="rounded-[22px] p-6"
+          style={{ background: 'rgba(20,8,45,0.92)', backdropFilter: 'blur(20px)' }}
+        >
           {loading ? (
-            <div className="flex flex-col items-center gap-4 py-10 text-zinc-400">
-              <div className="w-10 h-10 border-[3px] border-purple-400 border-t-transparent rounded-full animate-spin" />
-              <p className="text-sm">Ses işleniyor…</p>
+            <div className="flex flex-col items-center gap-4 py-10">
+              <div
+                className="w-12 h-12 rounded-full border-[3px] border-t-transparent animate-spin"
+                style={{ borderColor: 'rgba(192,132,252,0.3)', borderTopColor: '#c084fc' }}
+              />
+              <p className="text-purple-300 text-sm">Ses işleniyor…</p>
             </div>
           ) : (
             <>

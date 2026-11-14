@@ -16,24 +16,28 @@ export default function Step5Result({ originalBlob, onRestart }) {
 
   return (
     <div className="flex flex-col items-center gap-5 text-center">
+      <div
+        className="w-20 h-20 rounded-3xl flex items-center justify-center text-4xl"
+        style={{ background: 'linear-gradient(135deg,rgba(251,191,36,0.25),rgba(236,72,153,0.2))', border: '1px solid rgba(253,230,138,0.3)' }}
+      >
+        🎉
+      </div>
+
       <div>
-        <h2 className="text-xl font-bold text-white mb-1">Cevap zamanı!</h2>
-        <p className="text-zinc-500 text-sm leading-relaxed">
+        <h2 className="text-xl font-black text-white mb-1">Cevap zamanı!</h2>
+        <p className="text-purple-200/50 text-sm leading-relaxed">
           Orijinal kaydı çalarak doğru cevabı açıklayın.
         </p>
       </div>
 
-      <div className="w-16 h-16 rounded-2xl glass flex items-center justify-center text-3xl">
-        🎉
-      </div>
-
       <PlayerButton onPlay={handlePlay} isPlaying={isPlaying} label="Orijinal Kaydı Dinle" />
 
-      <div className="w-full h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(139,92,246,0.3), transparent)' }} />
+      <div className="w-full h-px" style={{ background: 'linear-gradient(90deg,transparent,rgba(192,132,252,0.25),transparent)' }} />
 
       <button
         onClick={onRestart}
-        className="w-full py-5 rounded-2xl text-zinc-300 font-bold text-lg glass transition-all duration-200 hover:bg-white/10 active:scale-97"
+        className="w-full rounded-2xl font-black text-xl active:scale-95 transition-transform"
+        style={{ minHeight: '64px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(192,132,252,0.25)', color: '#d8b4fe' }}
       >
         Yeniden Oyna
       </button>
