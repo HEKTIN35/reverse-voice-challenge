@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import PlayerButton from '../components/PlayerButton';
 import { playBlob } from '../utils/reverseAudio';
 
-export default function Step5Result({ guess, originalBlob, onRestart }) {
+export default function Step5Result({ originalBlob, onRestart }) {
   const [realName, setRealName] = useState('');
   const [revealed, setRevealed] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -16,18 +16,14 @@ export default function Step5Result({ guess, originalBlob, onRestart }) {
     playerRef.current = playBlob(originalBlob, () => setIsPlaying(false));
   };
 
-  const isMatch =
-    revealed &&
-    realName.trim().toLowerCase() === guess.toLowerCase();
-
   return (
     <div className="flex flex-col items-center gap-6 text-center">
-      <h2 className="text-2xl font-bold text-white">Sonuç</h2>
+      <h2 className="text-2xl font-bold text-white">Cevap</h2>
 
       {!revealed ? (
         <>
           <p className="text-zinc-400 max-w-xs">
-            Gerçek ismi girerek sonucu açıkla.
+            Herkes tahminini söyledi mi? Cevabı gir ve göster!
           </p>
           <input
             type="text"
@@ -41,29 +37,16 @@ export default function Step5Result({ guess, originalBlob, onRestart }) {
             onClick={() => setRevealed(true)}
             className="px-10 py-4 rounded-2xl bg-green-600 hover:bg-green-500 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-lg transition-all duration-200 w-full max-w-xs"
           >
-            Sonucu Göster
+            Göster!
           </button>
         </>
       ) : (
         <>
-          <div className="text-5xl">{isMatch ? '🎉' : '😅'}</div>
-
-          <div className="flex gap-4 w-full max-w-xs">
-            <div className="flex-1 bg-zinc-800 rounded-2xl p-4">
-              <p className="text-zinc-500 text-xs mb-1">TAHMİN</p>
-              <p className="text-white font-bold text-lg">{guess}</p>
-            </div>
-            <div className="flex-1 bg-zinc-800 rounded-2xl p-4">
-              <p className="text-zinc-500 text-xs mb-1">GERÇEK</p>
-              <p className="text-white font-bold text-lg">{realName.trim()}</p>
-            </div>
+          <div className="text-6xl">🎉</div>
+          <div className="bg-zinc-800 rounded-2xl px-8 py-6 w-full max-w-xs">
+            <p className="text-zinc-500 text-xs mb-2 uppercase tracking-widest">Cevap</p>
+            <p className="text-white font-black text-3xl">{realName.trim()}</p>
           </div>
-
-          <p className="text-zinc-400 text-sm">
-            {isMatch
-              ? 'Mükemmel! Doğru tahmin!'
-              : 'Yaklaşamamışsın ama iyi deneme!'}
-          </p>
 
           <PlayerButton
             onPlay={handlePlay}

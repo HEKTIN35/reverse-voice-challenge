@@ -15,8 +15,6 @@ export default function App() {
   const [originalBlob, setOriginalBlob] = useState(null);
   const [originalReversed, setOriginalReversed] = useState(null);
   const [mimicReversed, setMimicReversed] = useState(null);
-  const [guess, setGuess] = useState('');
-
   const handleStep1Done = async (blob) => {
     setLoading(true);
     const reversed = await reverseAudioBlob(blob);
@@ -34,17 +32,11 @@ export default function App() {
     setStep(4);
   };
 
-  const handleStep4Done = (guessText) => {
-    setGuess(guessText);
-    setStep(5);
-  };
-
   const handleRestart = () => {
     setStep(1);
     setOriginalBlob(null);
     setOriginalReversed(null);
     setMimicReversed(null);
-    setGuess('');
   };
 
   return (
@@ -67,10 +59,9 @@ export default function App() {
         {!loading && step === 1 && <Step1Record onDone={handleStep1Done} />}
         {!loading && step === 2 && <Step2Listen reversedBuffer={originalReversed} onDone={() => setStep(3)} />}
         {!loading && step === 3 && <Step3Mimic onDone={handleStep3Done} />}
-        {!loading && step === 4 && <Step4Guess mimicReversedBuffer={mimicReversed} onDone={handleStep4Done} />}
+        {!loading && step === 4 && <Step4Guess mimicReversedBuffer={mimicReversed} onDone={() => setStep(5)} />}
         {!loading && step === 5 && (
           <Step5Result
-            guess={guess}
             originalBlob={originalBlob}
             onRestart={handleRestart}
           />
